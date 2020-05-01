@@ -14,34 +14,37 @@ public class UserServiceImpl implements UserServiceInt {
 	
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Override
 	public List<User> findAll() {
 		return userRepository.findAll();
 	}
+	
 	@Override
 	public User findUserById(Long id) {
-		return userRepository.findUserById();
+		return userRepository.findUserById(id);
 	}
+
 	@Override
 	public User saveUser(User user) {
 		return userRepository.save(user);
 	}
+
 	@Override
 	public User updateUserById(Long id, User userFromForm) {
 		User userFromDb = findUserById(id);
 		
-	// userFromDb.saveName(userFromForm.getUserName;
-	// userFromDb.saveemail(userFromForm.getUseremail;
+//		userFromDb.setName(userFromForm.getName());
+//		userFromDb.setEmail(userFromForm.getEmail());	
 		
-		BeanUtils.copyProperties(userFromForm, userFromDb);
-		return userRepository.save(userFromDb);
+        BeanUtils.copyProperties(userFromForm, userFromDb); // Make sure to check
+        
+        return userRepository.save(userFromDb);
 	}
+
 	@Override
 	public void deleteUserById(Long id) {
 		userRepository.deleteById(id);
-		
 	}
-
 	
 }

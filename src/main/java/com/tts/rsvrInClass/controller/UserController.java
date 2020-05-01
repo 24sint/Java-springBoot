@@ -48,15 +48,5 @@ public class UserController {
 	public void deleteUser(@PathVariable Long id) {
 		userServiceImpl.deleteUserById(id);
 	}
-	
-	
-	
-	
-	
-	//Get all Users
-	//Get User by Id
-	//Update User
-	//Create a User
-	//Delete a User
 
 }

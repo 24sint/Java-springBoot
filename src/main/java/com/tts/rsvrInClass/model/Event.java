@@ -1,12 +1,15 @@
 package com.tts.rsvrInClass.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Event {
@@ -19,8 +22,10 @@ public class Event {
 	private Float cost;
 	private Date eventDate;
 	
+	@ManyToMany(mappedBy = "events")
+	private Set<User> users = new HashSet<>();
 
-	
+
 	public Event() {}
 	
 	public Event(String name, String location, Float cost, Date eventDate) {
@@ -66,8 +71,23 @@ public class Event {
 	public Long getId() {
 		return id;
 	}
+	
+	public Set<User> getUsers() {
+		return users;
+	}
 
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
 
+	public void addUser(User user) {
+		this.users.add(user);
+		user.getEvents().add(this);
+	}
+	public void removeUser(User user) {
+		this.users.remove(user);
+		user.getEvents().remove(this);
+	}
 	@Override
 	public String toString() {
 		return "Event [name=" + name + ", location=" + location + ", cost=" + cost + ", eventDate=" + eventDate + "]";
