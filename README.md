@@ -9,7 +9,7 @@ The project includes the common REST API, The Business logic, MVC (Module View C
 Building this project requires that JDK 8 or more, JAR, Maven Dependencies
 
  # Run
-Run the code as Spring Boot App Navigate to http://localhost:8080. The app need to run  if you change any of the source files, and run the test JUnit Test
+Run the code as Spring Boot App. Navigate to <code>http://localhost:8080/</code>. The app need to run  if you change any of the source files, and run the test JUnit Test
 
 
  # Testing
